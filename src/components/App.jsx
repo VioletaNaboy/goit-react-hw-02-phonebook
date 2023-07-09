@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import PropTypes from 'prop-types';
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -58,6 +59,16 @@ export class App extends Component {
       </div>
     );
   }
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      })
+    ).isRequired,
+    filter: PropTypes.string.isRequired,
+  };
 }
 
 export default App;

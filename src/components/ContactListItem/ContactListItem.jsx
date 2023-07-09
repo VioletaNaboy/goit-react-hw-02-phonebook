@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 export class ContactListItem extends Component {
   handleDelete = () => {
     const { contact, onDeleteContact } = this.props;
@@ -14,4 +15,12 @@ export class ContactListItem extends Component {
       </li>
     );
   }
+  static propTypes = {
+    contact: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired,
+    onDeleteContact: PropTypes.func.isRequired,
+  };
 }
